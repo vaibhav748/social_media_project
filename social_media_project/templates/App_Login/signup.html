@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block css_block %}
+<style>
+.sign_up{
+    width: 550px;
+    border: 1px solid #ccc;
+    padding: 40px;
+}
+
+.login{
+    width: 550px;
+    border: 1px solid #ccc;
+    padding: 30px;
+}
+</style>
+{% endblock %}
+
+{% block body_block %}
+    <br>
+    <center>
+<div class="sign_up">
+    <h3><strong>Sign Up Here to Create Profile</strong></h3>
+<div  id="form">
+{% csrf_token %}
+    <br>
+{{ form|crispy }}
+        <button type="button" id="submit1" class="btn btn-info btn-sm" style="width:100%">SignUp</button>
+
+</div>
+
+</div>
+    <div class="login">
+        <p>Already Have an Account?<a href="{% url 'App_Login:login' %}"> Login Here</a></p>
+    </div>
+
+    <br><br>
+    </center>
+
+{% endblock %}
+
+{% block js %}
+{#    <script>#}
+{#    const form = document.getElementById("form");#}
+{#    form.addEventListener('submit', submitHandler);#}
+{#    alert("Signin Successfully.");#}
+{#    function submitHandler(e){#}
+{#        e.preventDefault();#}
+{#        $.ajax({#}
+{#            type: 'POST',#}
+            {#url: {% url 'App_Login:signup' %},#}
+{#            url: "/accounts/signup/",#}
+{#            data: $("#form").serialize(),#}
+{#            dataType: "json",#}
+{#            success: function(data) {#}
+{#          alert("Signin Successfully.");#}
+{##}
+{#    },#}
+{#    error: function() {#}
+{#        alert("message",'error handling here');#}
+{#    }#}
+{#        })#}
+{#    }#}
+{##}
+{##}
+{##}
+{#    </script>#}
+
+{% endblock %}
+

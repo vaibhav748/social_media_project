@@ -1,0 +1,60 @@
+{% load crispy_forms_tags %}
+
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+<div  id="form">
+    <input type="text" id="username1" placeholder="username" >
+    <input type="email" id="email1" placeholder="email">
+    <input type="password" id="password1" placeholder="password">
+    <input type="password" id="password2" placeholder=" confirm password">
+
+    <button type="button" id="submit1" class="btn btn-info btn-sm" style="width:100%">SignUp</button>
+
+</div>
+
+</body>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+$(document).on('click', '#submit1',function(e){
+ alert("hiii")
+  var username = $("#username1").val()
+    var email1 = $("#email1").val()
+  var password1 = $("#password1").val()
+  var password2 = $("#password2").val()
+
+  var my_data = {
+    "username" : username,
+      'email1':email1,
+      'password1' : password1,
+      'password2' : password2,
+      'csrfmiddlewaretoken': "{{ csrf_token }}"
+  }
+  $.ajax({
+  type:'POST',
+  url: "/accounts/signup/",
+  data:my_data,
+success:function(json){
+  alert('success' );
+    console.log("messsage","successs");
+  },
+});
+});
+</script>
+
+</html>
